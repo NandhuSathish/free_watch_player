@@ -67,44 +67,44 @@ function changeServer(serverNumber) {
     if (params.type === 'movie') {
         switch (serverNumber) {
             case 1:
-                src = `https://vidsrc.cc/v3/embed/movie/${params.id}?autoPlay=false`;
-                break; // Rakan
+                src = `https://vidsrc.cc/v3/embed/movie/${params.tmdbId}?autoPlay=false`;
+                break; // Aether
             case 2:
-                src = `https://moviesapi.club/movie/${params.id}`;
-                break; // Bard
+                src = `https://moviesapi.club/movie/${params.tmdbId}`;
+                break; // Zephyr
             case 3:
-                src = `https://vidsrc.me/embed/movie?imdb=${params.id}`;
-                break; // Xayah
+                src = `https://vidsrc.me/embed/movie?tmdb=${params.tmdbId}`;
+                break; // Nyx
             case 4:
-                src = `https://player.videasy.net/movie/${params.id}`;
-                break; // Ekko
+                src = `https://player.videasy.net/movie/${params.tmdbId}`;
+                break; // Orion
             case 5:
-                src = `https://vidsrc.su/embed/movie/${params.id}`;
-                break; // Naafiri
+                src = `https://vidsrc.su/embed/movie/${params.tmdbId}`;
+                break; // Luna
             case 6:
-                src = `https://vidlink.pro/movie/${params.id}?title=true&poster=true&autoplay=false`;
-                break; // Ryze
+                src = `https://vidlink.pro/movie/${params.tmdbId}?title=true&poster=true&autoplay=false`;
+                break; // Nova
         }
     } else if (params.type === 'tv') {
         switch (serverNumber) {
             case 1:
-                src = `https://vidsrc.cc/v3/embed/tv/${params.id}/${params.season}/${params.episode}?autoPlay=false`;
-                break; // Rakan
+                src = `https://vidsrc.cc/v3/embed/tv/${params.tmdbId}/${params.season}/${params.episode}?autoPlay=false`;
+                break; // Aether
             case 2:
-                src = `https://moviesapi.club/tv/${params.id}-${params.season}-${params.episode}`;
-                break; // Bard
+                src = `https://moviesapi.club/tv/${params.tmdbId}-${params.season}-${params.episode}`;
+                break; // Zephyr
             case 3:
-                src = `https://vidsrc.me/embed/tv?imdb=${params.id}&season=${params.season}&episode=${params.episode}`;
-                break; // Xayah
+                src = `https://vidsrc.me/embed/tv?tmdb=${params.tmdbId}&season=${params.season}&episode=${params.episode}`;
+                break; // Nyx
             case 4:
-                src = `https://player.videasy.net/tv/${params.id}/${params.season}/${params.episode}?nextEpisode=true&episodeSelector=true`;
-                break; // Ekko
+                src = `https://player.videasy.net/tv/${params.tmdbId}/${params.season}/${params.episode}?nextEpisode=true&episodeSelector=true`;
+                break; // Orion
             case 5:
-                src = `https://vidsrc.su/embed/tv/${params.id}/${params.season}/${params.episode}`;
-                break; // Naafiri
+                src = `https://vidsrc.su/embed/tv/${params.tmdbId}/${params.season}/${params.episode}`;
+                break; // Luna
             case 6:
-                src = `https://vidlink.pro/tv/${params.id}/${params.season}/${params.episode}?title=true&poster=true&autoplay=false&nextbutton=true`;
-                break; // Ryze
+                src = `https://vidlink.pro/tv/${params.tmdbId}/${params.season}/${params.episode}?title=true&poster=true&autoplay=false&nextbutton=true`;
+                break; // Nova
         }
     }
 
@@ -284,7 +284,7 @@ async function loadPopoverSelectEpisode(params, tmdbData) {
 window.onload = async () => {
     const params = getURLParams();
     // if (!params) {
-    //     window.location.href = 'https://github.com/TomasTNunes/TMDB-Player?tab=readme-ov-file#tmdb-player';
+    //     window.location.href = 'https://github.com/NandhuSathish/free_watch_imdb?tab=readme-ov-file';
     //     return;
     // }
 
