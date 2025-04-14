@@ -3,15 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>TMDB Player</title>
-
-        <!-- <link rel="icon" href="./icons/icon16.png" sizes="16x16">
-    <link rel="icon" href="./icons/icon48.png" sizes="48x48">
-    <link rel="icon" href="./icons/icon128.png" sizes="128x128"> -->
-
+        <title>Free Watch IMDb</title>
+        <link rel="icon" href="./icons/icon16.png" sizes="16x16" />
+        <link rel="icon" href="./icons/icon48.png" sizes="48x48" />
+        <link rel="icon" href="./icons/icon128.png" sizes="128x128" />
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=El+Messiri&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
         <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </head>
     <body>
         <div class="content-wrapper">
@@ -19,9 +18,8 @@
                 <header class="player-header">
                     <div class="header-buttons">
                         <a href="https://github.com/NandhuSathish/free_watch_imdb" target="_blank" class="git-button" title="GitHub">
-                            <i class="fab fa-github"></i>
+                            <img src="/icons/logo.png" alt="free_watch_imdb" srcset="" />
                         </a>
-                        <a href="https://github.com/NandhuSathish/free_watch_imdb" target="_blank" class="bug-button" title="Report Bug">🐛</a>
                     </div>
                     <h2 class="show-title" id="title"></h2>
                     <div class="header-buttons">
@@ -106,18 +104,18 @@
             <div class="secondary-content">
                 <div class="sidebar">
                     <div class="servers">
-                        <h3 class="servers-title">AVAILABLE SERVERS</h3>
+                        <h3 class="text-sm/6 font-semibold text-gray-400 py-2">AVAILABLE SERVERS</h3>
                         <div class="server-grid">
-                            <button class="server-card" id="server1" onclick="changeServer(1)">
-                                <div class="server-info">
-                                    <span class="server-name">Aether</span>
-                                    <span class="server-label">Generally better quality.</span>
-                                </div>
-                            </button>
                             <button class="server-card" id="server2" onclick="changeServer(2)">
                                 <div class="server-info">
                                     <span class="server-name">Zephyr</span>
                                     <span class="server-label">Recommended for recently released movies.</span>
+                                </div>
+                            </button>
+                            <button class="server-card" id="server1" onclick="changeServer(1)">
+                                <div class="server-info">
+                                    <span class="server-name">Aether</span>
+                                    <span class="server-label">Generally better quality.</span>
                                 </div>
                             </button>
                             <button class="server-card" id="server3" onclick="changeServer(3)">
