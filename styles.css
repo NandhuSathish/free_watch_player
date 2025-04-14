@@ -60,7 +60,7 @@ body {
     text-decoration: none; /* Remove underline from links */
 }
 
-.git-button i {
+.git-button {
     font-size: 40px; /* Adjusted GitHub icon size */
 }
 
@@ -399,7 +399,7 @@ body {
         gap: 4px;
     }
 
-    .git-button i {
+    .git-button  {
         font-size: 30px; /* Adjusted GitHub icon size */
     }
 
