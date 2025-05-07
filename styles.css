@@ -68,6 +68,15 @@ body {
     background-repeat: no-repeat;
 }
 
+.ublock-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-image: url('./assets/ublock.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 
 .git-button i {
     font-size: 40px; /* Adjusted GitHub icon size */
@@ -164,10 +173,7 @@ body {
     background-color: transparent; /* Transparent background for movie-servers */
 }
 
-.ublock {
-    width: 25px;
-    height: 25px;
-}
+
 
 
 /* Server Grid */
@@ -180,6 +186,7 @@ body {
 .server-card {
     height: 62px;
     padding: 12px;
+    margin-bottom: 6px;
     border: 1px solid rgba(255, 255, 255, .05); /* Border color for server-card */
     border-radius: 8px;
     background-color: #ffffff05; /* Transparent background for server-card */
@@ -193,9 +200,9 @@ body {
 .ublock-card{
         height: 62px;
             padding: 12px;
-            margin-top: 20px;
-            border: 2px solid rgba(255, 255, 255, .05);
-            border-color: white;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, .05);
+            border-color: rgb(42, 51, 87);
             border-radius: 8px;
             background-color: #ffffff05;
             /* Transparent background for server-card */
@@ -409,10 +416,6 @@ padding: 4px;
     .server-grid {
         height: auto; /* Allow server-grid to grow based on its content */
     }
-.ublock {
-    width: 25px;
-    height: 25px;
-}
 
     .player-content {
         position: relative;
@@ -427,10 +430,6 @@ padding: 4px;
         width: 100%;
         height: 100%;
     }
-.ublock {
-    width: 25px;
-    height: 25px;
-}
 }
 
 /* Media Query for screens smaller than 768px */
@@ -484,8 +483,5 @@ padding: 4px;
     .episode-details {
         font-size: 12px;
     }
-.ublock {
-    width: 25px;
-    height: 25px;
-}
+
 }
