@@ -13,48 +13,6 @@ const popoverBackButton = document.querySelector('.popover-back-button');
 const popoverCloseButton = document.querySelector('.popover-close-button');
 const popoverListContainer = document.querySelector('.popover-list-container');
 
-// Ad-blocking and pop-up prevention
-function setupAdBlocking() {
-    // Create a style element to hide ad-related elements
-    const adBlockStyle = document.createElement('style');
-    adBlockStyle.innerHTML = `
-        /* Common ad selectors */
-        [id*="ad"], [class*="ad"], [id*="popup"], [class*="popup"], 
-        [id*="banner"], [class*="banner"], [id*="overlay"], [class*="overlay"],
-        iframe:not(#videoFrame) {
-            display: none !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
-            visibility: hidden !important;
-        }
-    `;
-    document.head.appendChild(adBlockStyle);
-
-    // Block new windows/pop-ups
-    const originalOpen = window.open;
-    window.open = function() {
-        console.log('Pop-up blocked');
-        return null;
-    };
-
-    // Handle iframe security
-    iframe.addEventListener('load', function() {
-        try {
-            // Add sandbox to limit iframe capabilities
-            iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups');
-            
-            // Attempt to inject ad-blocking into iframe content
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const adBlockIframeStyle = document.createElement('style');
-            adBlockIframeStyle.innerHTML = adBlockStyle.innerHTML;
-            iframeDoc.head.appendChild(adBlockIframeStyle);
-        } catch(e) {
-            // Cannot access iframe content due to same-origin policy - expected for cross-origin content
-            console.log('Cannot modify iframe content due to security restrictions');
-        }
-    });
-}
-
 // Utility Functions
 function getURLParams() {
     const params = new URLSearchParams(window.location.search);
@@ -156,31 +114,11 @@ function changeServer(serverNumber) {
         }
     }
 
-    // Apply anti-popup wrapper
-    src = applyAdBlockParams(src);
     iframe.src = src;
 
     // Highlight the selected server button
     server_buttons.forEach((button) => button.classList.remove('selected'));
     document.getElementById(`server${serverNumber}`).classList.add('selected');
-}
-
-// Helper function to add anti-ad parameters to URLs when possible
-function applyAdBlockParams(url) {
-    // For services that support it, add parameters to disable ads
-    const parsedUrl = new URL(url);
-    
-    // Some services support noads or similar parameters
-    if (url.includes('vidsrc.me') || url.includes('vidsrc.su') || url.includes('vidsrc.cc')) {
-        parsedUrl.searchParams.append('block_popups', 'true');
-        parsedUrl.searchParams.append('no_ads', 'true');
-    }
-    
-    if (url.includes('vidlink.pro')) {
-        parsedUrl.searchParams.append('popup', 'false');
-    }
-    
-    return parsedUrl.toString();
 }
 
 async function fetchTMDBData(params) {
@@ -350,9 +288,6 @@ async function loadPopoverSelectEpisode(params, tmdbData) {
 
 // Initialize popover data
 window.onload = async () => {
-    // Setup ad-blocking features first
-    setupAdBlocking();
-    
     const params = getURLParams();
     // if (!params) {
     //     window.location.href = 'https://github.com/NandhuSathish/free_watch_imdb?tab=readme-ov-file';
@@ -431,29 +366,3 @@ window.onload = async () => {
         changeServer(1);
     }
 };
-
-// Additional defensive measures against ads
-document.addEventListener('DOMContentLoaded', function() {
-    // Prevent creation of new elements that might be ads
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'childList') {
-                mutation.addedNodes.forEach(function(node) {
-                    if (node.nodeType === 1) { // Element node
-                        const element = node;
-                        // Check if it might be an ad
-                        if ((element.id && (element.id.includes('ad') || element.id.includes('popup'))) ||
-                            (element.className && (element.className.includes('ad') || element.className.includes('popup'))) ||
-                            element.tagName === 'IFRAME' && element.id !== 'videoFrame') {
-                            // Remove potential ad elements
-                            element.remove();
-                        }
-                    }
-                });
-            }
-        });
-    });
-
-    // Start observing the document body for added nodes
-    observer.observe(document.body, { childList: true, subtree: true });
-});
